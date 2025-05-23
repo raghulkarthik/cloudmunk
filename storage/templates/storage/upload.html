@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload File</title>
+</head>
+<body>
+    <h2>Upload new File</h2>
+
+    <!-- Display messages -->
+    {% if messages %}
+        {% for message in messages %}
+    {% if message.tags == 'error' %}
+        <p style="color: red;">{{ message }}</p>
+    {% else %}
+        <p style="color: green;">{{ message }}</p>
+    {% endif %}
+{% endfor %}
+
+
+    {% endif %}
+
+    <!-- Show used storage info (if passed in context) -->
+    {% if used_storage and max_storage %}
+        <p>You ve used {{ used_storage|floatformat:2 }} MB of {{ max_storage }} MB</p>
+    {% endif %}
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
+
+    <p><a href="{% url 'storage:file_list' %}">View My Files</a></p>
+    <p><a href="{% url 'users:dashboard' %}">Dashboard</a></p>
+</body>
+</html>

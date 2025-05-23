@@ -1,0 +1,6 @@
+<h2>Your Files</h2>
+<ul>
+  {% for file in files %}
+    <li><a href="{{ file.file.url }}">{{ file.file.name }}</a></li>
+  {% endfor %}
+</ul>
