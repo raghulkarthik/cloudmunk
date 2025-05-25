@@ -11,7 +11,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', 'localhost').split(',')
+ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', 'cloudmunk.onrender.com').split(',')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -124,3 +124,7 @@ LOGGING = {
         'level': 'WARNING',
     },
 }
+
+if not DEBUG:
+    import dj_database_url
+    DATABASES['default'] = dj_database_url.config(conn_max_age=600)
