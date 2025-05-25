@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+    <h2>Welcome, {{ user.username }}!</h2>
+    <p>You are logged in.</p>
+
+    <p>
+        <a href="{% url 'storage:upload_file' %}">Upload File</a> |
+        <a href="{% url 'storage:file_list' %}">My Files</a>
+    </p>
+
+    <!-- Logout as POST form -->
+    <form method="POST" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to Cloud Storage!</title>
+</head>
+<body>
+    <h1>Welcome to Cloud Storage!</h1>
+
+    {% if messages %}
+        {% for message in messages %}
+            <p style="color: green">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+
+    <p><a href="{% url 'users:register' %}">Register</a></p>
+    <p>
+        Already have an account? <a href="{% url 'users:login' %}">Login</a> |
+        <a href="/admin/">Admin</a>
+    </p>
+</body>
+</html>
